@@ -72,3 +72,8 @@ Each saved record looks like this:
   "created_at": "2025-02-19T10:45:21Z"
 }
 ```
+
+## Related Projects
+- **AI Private Layer Ops** (The core PII proxy server): [https://github.com/Azizbek-Analyst/ai-private-layer-ops](https://github.com/Azizbek-Analyst/ai-private-layer-ops)
+- **Chat Order Demo** (Example using text messages for ordering): [https://github.com/Azizbek-Analyst/ai_private_layer_chat_demo](https://github.com/Azizbek-Analyst/ai_private_layer_chat_demo)
+
