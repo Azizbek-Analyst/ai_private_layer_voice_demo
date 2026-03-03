@@ -1,13 +1,22 @@
-# Deepgram Voice Agent – Insurance Policy Updates
+# Deepgram Voice Agent with AI Private Layer
 
-This sample shows how to build an insurance servicing voice agent that keeps customer PII private before it ever reaches the LLM. The flow is:
+This repository demonstrates how to build a voice agent that is intrinsically safe for highly regulated industries (e.g., healthcare, finance, insurance) utilizing **AI Private Layer Ops** for real-time PII masking.
+
+In environments governed by strong data protection regulations like GPA (Global Privacy Assembly standards) or GDPR, sending raw customer audio transcripts directly to a cloud LLM is unacceptable. This project shows how to intercept and mask Sensitive Data / Personally Identifiable Information (PII) **before** it ever leaves your secure perimeter.
+
+The flow is:
 
 1. Capture microphone audio locally.
 2. Send each utterance to [Deepgram STT](https://developers.deepgram.com/docs/listen) via REST.
-3. Run the transcript through the **AI Private Layer** (`ai_private_api`) to mask PII and produce encryption bundles.
-4. Send the masked text to OpenAI for reasoning with the domain-specific prompt in `insurance_prompt.py`.
+3. **Data Protection:** Run the transcript through the **AI Private Layer** (`ai_private_api`) to detect and mask PII, ensuring that only anonymized text is exposed.
+4. Send the *masked* text to OpenAI for reasoning with the domain-specific prompt.
 5. Generate the spoken reply through [Deepgram TTS](https://developers.deepgram.com/docs/text-to-speech) and play it back.
-6. When the LLM emits `POLICY_UPDATE: {...}`, parse and persist it to `data/policy_updates.json` for auditing.
+6. When the LLM emits a business payload like `POLICY_UPDATE: {...}`, extract it and securely map back the required entities if needed.
+
+## Why this matters (GPA & GDPR Compliance)
+- **Data Minimization:** Only necessary, non-identifiable data reaches the LLM.
+- **Privacy by Design:** Security is built into the architecture. The **AI Private Layer** acts as a reliable filter.
+- **Auditability:** You can log the exact state of the masked payloads sent out of your network.
 
 ## Features
 - Local capture + Deepgram STT (REST) means you can run the AI Private Layer **before** sending data to the LLM.
@@ -18,7 +27,7 @@ This sample shows how to build an insurance servicing voice agent that keeps cus
 
 ## Requirements
 - Python 3.10+
-- A running instance of the **AI Private Layer** (`ai_private_api` folder on Desktop) on `http://127.0.0.1:9000` or a custom URL.
+- A running instance of the **AI Private Layer** (`ai_private_api` folder) on `http://127.0.0.1:9000` or a custom URL.
 - Deepgram API key with access to `listen` (STT) and `speak` (TTS) endpoints.
 - OpenAI API key for the Think step.
 - Dependencies from `requirements.txt` (`sounddevice`, `requests`, `openai`, `webrtcvad`, etc.).
@@ -26,12 +35,11 @@ This sample shows how to build an insurance servicing voice agent that keeps cus
 ## Quick start
 1. Create a virtual environment and install dependencies:
    ```bash
-   cd Desktop/deepgram_test
    python -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
    ```
-2. In a separate terminal start the AI Private Layer (from `~/Desktop/ai_private_api`):
+2. In a separate terminal start your AI Private Layer instance (from `~/Desktop/ai_private_api` or wherever you cloned the ops repo):
    ```bash
    cd ~/Desktop/ai_private_api
    source .venv/bin/activate  # if you created one
@@ -55,7 +63,7 @@ This sample shows how to build an insurance servicing voice agent that keeps cus
    ```
 5. Speak with the agent about a policy change. Each turn is transcribed, sanitized, and passed to OpenAI.
 6. When the customer confirms, the LLM emits a `POLICY_UPDATE:` message which is saved to `data/policy_updates.json`.
-7. Inspect the conversation log in `data/logs/session_<timestamp>.log` for raw text, sanitized text, bundles, and assistant replies.
+7. Inspect the conversation log in `data/logs/` for raw text, sanitized text, bundles, and assistant replies.
 
 ## Output format
 Each saved record looks like this:
@@ -74,6 +82,5 @@ Each saved record looks like this:
 ```
 
 ## Related Projects
-- **AI Private Layer Ops** (The core PII proxy server): [https://github.com/Azizbek-Analyst/ai-private-layer-ops](https://github.com/Azizbek-Analyst/ai-private-layer-ops)
+- **AI Private Layer Ops** (The core PII proxy server toolkit): [https://github.com/Azizbek-Analyst/ai-private-layer-ops](https://github.com/Azizbek-Analyst/ai-private-layer-ops)
 - **Chat Order Demo** (Example using text messages for ordering): [https://github.com/Azizbek-Analyst/ai_private_layer_chat_demo](https://github.com/Azizbek-Analyst/ai_private_layer_chat_demo)
-
