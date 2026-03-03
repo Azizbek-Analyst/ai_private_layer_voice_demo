@@ -1,0 +1,24 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Project data
+# We want to keep data/logs/*.log as examples, but if you don't want actual data to be committed later, you might want to uncomment the line below.
+# data/logs/*.log
+# We want to keep data/policy_updates.json as an example, but if you don't want actual data to be committed later, you might want to uncomment the line below.
+# data/policy_updates.json
+
+# Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/

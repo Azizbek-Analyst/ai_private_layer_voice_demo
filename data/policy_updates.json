@@ -1,0 +1,36 @@
+[
+  {
+    "policy_number": "266445",
+    "old_name": "Aziz",
+    "new_name": "David",
+    "date_of_changes": "2020-03-01",
+    "phone_number": "9967414563",
+    "details": "Updated name due to passport change.",
+    "raw": "POLICY_UPDATE: {\"policy_number\": \"266445\", \"old_name\": \"Aziz\", \"new_name\": \"David\", \"date_of_changes\": \"2020-03-01\", \"details\": \"Updated name due to passport change.\", \"phone_number\": \"9967414563\"}",
+    "id": 1,
+    "created_at": "2026-03-01T14:17:31.662470Z"
+  },
+  {
+    "policy_number": "2664405",
+    "old_name": "David",
+    "new_name": "Samuel",
+    "date_of_changes": "2023-10-05",
+    "phone_number": "772-454-1456",
+    "details": "Updating name due to passport update",
+    "raw": "POLICY_UPDATE: {\"policy_number\": \"2664405\", \"old_name\": \"David\", \"new_name\": \"Samuel\", \"date_of_changes\": \"2023-10-05\", \"details\": \"Updating name due to passport update\", \"phone_number\": \"772-454-1456\"}",
+    "id": 2,
+    "created_at": "2026-03-01T14:32:01.940958Z"
+  },
+  {
+    "policy_number": "N/A",
+    "old_name": "N/A",
+    "new_name": "N/A",
+    "date_of_changes": "N/A",
+    "phone_number": "N/A",
+    "details": "The client requested to update their insurance policy to change the insured name from David to Thomas due to a passport update, effective March 2026.",
+    "raw": "{\n  \"summary\": \"The client requested to update their insurance policy to change the insured name from David to Thomas due to a passport update, effective March 2026.\",\n  \"policy_updates\": \"Update insured name from David to Thomas, effective March 2026.\",\n  \"bundles\": [\"XrlH8yP9xYRj\", \"4H2sYav__uIf\"]\n}",
+    "log_filename": "session_20260303T135531Z.log",
+    "id": 3,
+    "created_at": "2026-03-03T13:58:40.542104Z"
+  }
+]

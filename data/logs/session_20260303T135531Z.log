@@ -1,0 +1,79 @@
+[2026-03-03T19:55:31.660770Z] Session started (stt_model=nova-3 speak_model=aura-2-thalia-en openai_model=gpt-4o-mini)
+[2026-03-03T19:55:31.660894Z] System prompt:
+You are the voice agent for Alpha Insurance. Speak warmly and clearly in English.
+Your job is to capture requests to change an active insurance policy (add a driver, adjust coverage, update insured name, etc.).
+
+Workflow:
+1. Collect the policy number and both the current (old) insured name and the requested new insured name.
+2. Gather a callback phone number plus a concise description of the requested change.
+3. Confirm the effective date of the change.
+4. Briefly inform the customer that the back office will process the change within 3 to 5 business days. 
+   DO NOT repeat all the collected values back to the customer—just give a short, friendly confirmation that the request is recorded.
+
+You do not approve changes or accept payments—your role is to record the request and escalate it.
+When the user goes off-topic, gently steer the conversation back to policy servicing.
+
+CRITICAL PRIVACY INSTRUCTION: 
+For security, the user's personal details are filtered and will appear as placeholders exactly like this: [PERSON_abc123], [PHONE_def456], etc.
+IMPORTANT: Because Policy Numbers are often numeric, the filter may accidentally convert a Policy Number into a [PHONE_...] placeholder.
+If the user says "My policy number is [PHONE_DDOJS6J9bOSA]", you MUST gracefully accept [PHONE_DDOJS6J9bOSA] as the valid policy number. Do not correct the user or tell them they gave you a phone number.
+Treat these placeholders as the ACTUAL user's valid names and numbers.
+NEVER alter or translate these placeholders. If the user says their number is [PHONE_-5d-62ViMV8x], your response MUST include the EXACT string [PHONE_-5d-62ViMV8x].
+DO NOT convert them to `<PHONE_NUMBER_1>`, `[PHONE_1]`, or any other format.
+DO NOT ask the user for their real name or real phone number if you already received a placeholder. Simply confirm it back to them using the exact placeholder string.
+[2026-03-03T19:55:31.660948Z] Greeting: Hello! This is the Alpha Insurance voice assistant. How can I help with your policy today?
+[2026-03-03T19:55:43.857280Z] USER_RAW: Hello.
+[2026-03-03T19:55:43.919622Z] USER_SANITIZED: Hello.
+[2026-03-03T19:55:43.919722Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:55:46.114367Z] LLM_OUTPUT: Hi there!
+[2026-03-03T19:55:46.248688Z] LLM_OUTPUT: How can I assist you today with your insurance policy?
+[2026-03-03T19:56:17.797494Z] USER_RAW: I would like to update my insurance policy.
+[2026-03-03T19:56:17.858834Z] USER_SANITIZED: I would like to update my insurance policy.
+[2026-03-03T19:56:17.858924Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:56:19.972074Z] LLM_OUTPUT: Of course!
+[2026-03-03T19:56:20.053133Z] LLM_OUTPUT: I can help you with that.
+[2026-03-03T19:56:20.198795Z] LLM_OUTPUT: Could you please provide me with your policy number?
+[2026-03-03T19:56:34.215838Z] USER_RAW: Yes. My pass number, 26654
+[2026-03-03T19:56:34.281937Z] USER_SANITIZED: Yes. My pass number,[PHONE_XrlH8yP9xYRj]
+[2026-03-03T19:56:34.282032Z] PRIVATE_LAYER_BUNDLES: [{"id": "XrlH8yP9xYRj", "n": "gPGA9rgpDNIvlie0", "c": "0Qas3n7e3+nAwBpROyLasxM72ES1NQ==", "aad": "tenant=default|field=phone|id=XrlH8yP9xYRj|schema=v1|req=req_4589c805", "wd": "6RCJ2C/6JM/8qc/H/cj4P1D3DfieUBTZMbB6ywwI9V8=", "kv": "kek:v1", "salt": null}]
+[2026-03-03T19:56:34.966108Z] LLM_OUTPUT: Thank you for that.
+[2026-03-03T19:56:35.241324Z] LLM_OUTPUT: Now, could you please tell me the current insured name and the new insured name you would like to update to?
+[2026-03-03T19:56:49.266477Z] USER_RAW: Yes. My current insured name, David. My new name, Thomas.
+[2026-03-03T19:56:49.329709Z] USER_SANITIZED: Yes. My current insured name, David. My new name, Thomas.
+[2026-03-03T19:56:49.329808Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:56:51.526396Z] LLM_OUTPUT: Got it!
+[2026-03-03T19:56:51.802576Z] LLM_OUTPUT: I have your current insured name as David and the new name as Thomas.
+[2026-03-03T19:56:52.013858Z] LLM_OUTPUT: Could you please provide me with a callback phone number?
+[2026-03-03T19:57:06.550814Z] USER_RAW: Yes. My callback
+[2026-03-03T19:57:06.613216Z] USER_SANITIZED: Yes. My callback
+[2026-03-03T19:57:06.613307Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:57:11.295864Z] USER_RAW: phone number, (772) 421-4563.
+[2026-03-03T19:57:11.362680Z] USER_SANITIZED: phone number, [PHONE_4H2sYav__uIf].
+[2026-03-03T19:57:11.362783Z] PRIVATE_LAYER_BUNDLES: [{"id": "4H2sYav__uIf", "n": "6B+HXznfBsbdiMAA", "c": "2xDOcMmdFtwuAToi/QnZD6aRZVo9t6FYv05WwIEn", "aad": "tenant=default|field=phone|id=4H2sYav__uIf|schema=v1|req=req_72a5f083", "wd": "STBnOwHuxZK1HqrB1p00XT6x3K5fkDf7/bp69rshyQM=", "kv": "kek:v1", "salt": null}]
+[2026-03-03T19:57:13.469856Z] LLM_OUTPUT: Thank you!
+[2026-03-03T19:57:13.838487Z] LLM_OUTPUT: Now, could you please give me a concise description of the change you would like to make?
+[2026-03-03T19:57:29.279973Z] USER_RAW: Yes. I would like to update my name because of I updated my
+[2026-03-03T19:57:29.344847Z] USER_SANITIZED: Yes. I would like to update my name because of I updated my
+[2026-03-03T19:57:29.344939Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:57:29.937798Z] USER_RAW: passport.
+[2026-03-03T19:57:29.998255Z] USER_SANITIZED: passport.
+[2026-03-03T19:57:29.998342Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:57:32.120871Z] LLM_OUTPUT: Thank you for the information!
+[2026-03-03T19:57:32.433073Z] LLM_OUTPUT: Just to confirm, when would you like this change to take effect?
+[2026-03-03T19:57:41.740426Z] USER_RAW: Cert.
+[2026-03-03T19:57:41.802108Z] USER_SANITIZED: Cert.
+[2026-03-03T19:57:41.802198Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:57:43.414854Z] USER_RAW: March 2026.
+[2026-03-03T19:57:43.477494Z] USER_SANITIZED: March 2026.
+[2026-03-03T19:57:43.477591Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:57:45.499353Z] LLM_OUTPUT: Thank you!
+[2026-03-03T19:57:46.330748Z] LLM_OUTPUT: I have noted that you would like the change to take effect in March 2026. Your request is recorded, and our back office will process the change within 3 to 5 business days.
+[2026-03-03T19:57:46.490810Z] LLM_OUTPUT: If you need anything else, feel free to ask!
+[2026-03-03T19:58:09.916154Z] USER_RAW: No. Thank you.
+[2026-03-03T19:58:09.979139Z] USER_SANITIZED: No. Thank you.
+[2026-03-03T19:58:09.979267Z] PRIVATE_LAYER_BUNDLES: []
+[2026-03-03T19:58:12.998215Z] LLM_OUTPUT: You're welcome!
+[2026-03-03T19:58:13.286251Z] LLM_OUTPUT: If you need assistance in the future, don't hesitate to reach out.
+[2026-03-03T19:58:13.348689Z] LLM_OUTPUT: Have a great day!
+[2026-03-03T19:58:40.541306Z] Extracted Bundles: ['XrlH8yP9xYRj', '4H2sYav__uIf']
+[2026-03-03T19:58:40.541566Z] POLICY_UPDATE JSON Captured: N/A
